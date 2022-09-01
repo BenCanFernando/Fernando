@@ -2,11 +2,13 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/estilos.css')}}">
 
 
-<div class="container">
+<div class="container text-center">
 	<h1>Lista de Alumnos</h1>
+	<br>
 	<a class="pull-right" href="{{route('alumnos.create')}} "><button type="button" class="btn btn-primary">Nuevo</button></a>
 <div class="table-responsive-sm">
-	<table class="table table-border" id="tabla">
+<br>
+	<table class="table table-striped table-dark" id="tabla">
 		<thead>
 			<tr>
 				<th>Nombre</th>
@@ -18,7 +20,9 @@
 				<th>Gmail</th>
 				<th>Profesion</th>
 				<th>Genero</th>
-					<th>Fecha de nacimineto</th>				
+				<th>Fecha de nacimineto</th>
+				<th></th>
+				<th></th>				
 			</tr>
 		</thead>
 		<tbody>
@@ -34,7 +38,7 @@
 				<td>{{$a->profesion}}</td>
 				<td>{{$a->genero}}</td>
 				<td>{{$a->fechanac}}</td>
-			 <td><input type="button" class="btn btn-warning" value="Editar"></td>
+			 <td><a href=""><input type="button" class="btn btn-success" value="Editar"></td>
             <td>
                 <form method="POST" action="{{ url("alumnos/{$a->id}") }}">
 			      @csrf

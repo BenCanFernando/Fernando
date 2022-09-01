@@ -8,3 +8,4 @@
 
     </body>
 </html>
+<?php /**PATH C:\Users\Dell\Documents\Laravel\Aplicacion\resources\views/Vista.blade.php ENDPATH**/ ?>
