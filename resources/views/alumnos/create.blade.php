@@ -1,9 +1,21 @@
-<link rel="stylesheet" type="text/css" href="{{asset('css/estilos.css')}}">
-
-
-
+@include('app')
+@include('menu')
+	@if (count($errors)>0)
+<div class="alert alert-danger" role="aler">
+	<u>
+		@foreach ($errors->all() as $error)
+		<li>
+			{{$error}}
+		</li>
+		@endforeach
+	</u>
+@endif
+</div></div>
 <div class="container">
-	<div class="jumbotron jumbotron-fluid">
+
+	<div class="jumbotron">
+   <div class="form-row align-items-center">
+    <div class="form-group col-md-12">
 	<h1>Crear alumno</h1>
 	<form action="{{url('/alumnos')}}" method="post" enctype="multipart/from-data">
 	@csrf
@@ -24,7 +36,7 @@
 	<label for="profesion">Profesion</label>
 	<input type="text" class="form-control" name="profesion" id="profesion">
 	<label for="genero">Genero</label>
-	<select class="form-select" aria-label="Default select example" name="genero" >
+	<select class="custom-select " aria-label="Default select example" name="genero" >
 	  <option selected>Selecione</option>
 	  <option value="masculino">Masculino</option>
 	  <option value="femenino">Femenino</option>
@@ -37,5 +49,7 @@
     <a class="pull-right" href="{{route('alumnos.index')}} "><button type="button" class="btn btn-danger">Cancelar</button></a>
 		
 	</form>
+</div>
+</div>
 </div>
 </div>

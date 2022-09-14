@@ -2,7 +2,7 @@
 @include('menu')
 <div class="text-center">
 	@include('flash::message')
-	<h1>Lista de Alumnos</h1>
+	<h1>Lista de Cursos</h1>
 </div>
 <div class="container">
 	<a class="inline my-2 my-lg-3 float-left" href=""><button type="button" class="btn btn-success">Nuevo</button></a>
@@ -14,35 +14,26 @@
 <div class="table-responsive">
 	<table class="table table-hover" id="tabla">
 		<thead>
-			<tr class="table-secondary">
+		<tr class="table-secondary">
 				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Edad</th>
-				<th>ci</th>
-				<th>Telefono</th>
-				<th>Direccion</th>
-				<th>Gmail</th>
-				<th>Profesion</th>
-				<th>Genero</th>
-				<th>Fecha de nacimineto</th>
-				<th></th>				
+				<th>Descripcion</th>
+				<th>Fecha de inicio</th>
+				<th>Fecha fin</th>
+				<th>Estado</th>
+				<th>Opciones</th>				
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($alumnos as $a)
+			@foreach ($cursos as $a)
 			<tr>
 				<td>{{$a->nombre}}</td>
-				<td>{{$a->apellido}}</td>
-				<td>{{$a->edad}}</td>
-				<td>{{$a->ci}}</td>
-				<td>{{$a->telefono}}</td>
-				<td>{{$a->direccion}}</td>
-				<td>{{$a->gmail}}</td>
-				<td>{{$a->profesion}}</td>
-				<td>{{$a->genero}}</td>
-				<td>{{$a->fechanac}}</td>
-			    <td>
-			 	<div class="btn-group">
+				<td>{{$a->descripcion}}</td>
+				<td>{{$a->fecha_inicio}}</td>
+				<td>{{$a->fecha_fin}}</td>
+				<td>{{$a->estado}}</td>
+				
+			 <td>
+			 <div class="btn-group">
 				 <a href="{{route('alumnos.show', $a->id )}}"><input type="submit" class="btn btn-info" value="Ver"> </a>
 			 	<a href="{{url('/alumnos/'.$a->id.'/edit')}}">
 			 	<input type="submit"  class="btn btn-warning mr-1 ml-1" value="Editar">
@@ -58,9 +49,7 @@
 			@endforeach
 		</tbody>
 	</table>
-	<div class="d-flex justify-content-end">
-    {{ $alumnos->links() }}
-    <div class="pull-right mr-3">
+
    </div> 
   </tbody>
  </div>
