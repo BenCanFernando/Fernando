@@ -44,8 +44,10 @@
 	</select>
 	<label for="fechanac">Fecha de nacimiento</label>
 	<input type="date" class="form-control" name="fechanac" id="fechanac">
+	<label for="cursos_id">Curso</label>
+	<input type="cursos_id" class="form-control" name="cursos_id" id="cursos_id">
 	<br>
-    <input type="submit" class="btn btn-primary" value="Guardar">
+    <input type="submit" class="btn btn-success" value="Guardar">
     <a class="pull-right" href="{{route('alumnos.index')}} "><button type="button" class="btn btn-danger">Cancelar</button></a>
 		
 	</form>

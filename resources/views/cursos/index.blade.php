@@ -5,7 +5,7 @@
 	<h1>Lista de Cursos</h1>
 </div>
 <div class="container">
-	<a class="inline my-2 my-lg-3 float-left" href=""><button type="button" class="btn btn-success">Nuevo</button></a>
+	<a class="inline my-2 my-lg-3 float-left" href="{{route('cursos.create')}}"><button type="button" class="btn btn-success">Nuevo</button></a>
 		<form class="form-inline my-2 my-lg-0 float-right">
               <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
               <button class="btn btn-primary" type="submit">Buscar</button>
@@ -16,11 +16,11 @@
 		<thead>
 		<tr class="table-secondary">
 				<th>Nombre</th>
-				<th>Descripcion</th>
+				<th>Descripción</th>
 				<th>Fecha de inicio</th>
 				<th>Fecha fin</th>
 				<th>Estado</th>
-				<th>Opciones</th>				
+				<th></th>				
 			</tr>
 		</thead>
 		<tbody>
@@ -28,17 +28,17 @@
 			<tr>
 				<td>{{$a->nombre}}</td>
 				<td>{{$a->descripcion}}</td>
-				<td>{{$a->fecha_inicio}}</td>
-				<td>{{$a->fecha_fin}}</td>
+				<td>{{$a->fechainic}}</td>
+				<td>{{$a->fechafin}}</td>
 				<td>{{$a->estado}}</td>
 				
 			 <td>
 			 <div class="btn-group">
-				 <a href="{{route('alumnos.show', $a->id )}}"><input type="submit" class="btn btn-info" value="Ver"> </a>
-			 	<a href="{{url('/alumnos/'.$a->id.'/edit')}}">
+				 <a href="{{route('cursos.show', $a->id )}}"><input type="submit" class="btn btn-info" value="Ver"> </a>
+			 	<a href="{{url('/cursos/'.$a->id.'/edit')}}">
 			 	<input type="submit"  class="btn btn-warning mr-1 ml-1" value="Editar">
 			 	</a>
-                <form method="POST" action="{{ url("alumnos/{$a->id}") }}">
+                <form method="POST" action="{{ url("cursos/{$a->id}") }}">
 			      @csrf
 			      @method('DELETE')
 			      <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro?')" value="Borrar">

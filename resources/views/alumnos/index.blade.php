@@ -5,7 +5,7 @@
 	<h1>Lista de Alumnos</h1>
 </div>
 <div class="container">
-	<a class="inline my-2 my-lg-3 float-left" href=""><button type="button" class="btn btn-success">Nuevo</button></a>
+	<a class="inline my-2 my-lg-3 float-left" href="{{route('alumnos.create')}}"><button type="button" class="btn btn-success">Nuevo</button></a>
 		<form class="form-inline my-2 my-lg-0 float-right">
               <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
               <button class="btn btn-primary" type="submit">Buscar</button>
@@ -25,6 +25,7 @@
 				<th>Profesion</th>
 				<th>Genero</th>
 				<th>Fecha de nacimineto</th>
+				<th>Curso</th>
 				<th></th>				
 			</tr>
 		</thead>
@@ -41,6 +42,7 @@
 				<td>{{$a->profesion}}</td>
 				<td>{{$a->genero}}</td>
 				<td>{{$a->fechanac}}</td>
+				<td>{{$a->cursos_id}}</td>
 			    <td>
 			 	<div class="btn-group">
 				 <a href="{{route('alumnos.show', $a->id )}}"><input type="submit" class="btn btn-info" value="Ver"> </a>
