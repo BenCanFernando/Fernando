@@ -21,5 +21,10 @@ class Alumno extends Model
         'profesion',
         'genero',
         'fechanac'
+
+
     ];
+    public function cursos (){
+        return $this->belongsTo('App\Models\Curso','curso_id');
+    }
 }

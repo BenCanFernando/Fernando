@@ -12,9 +12,12 @@ class Curso extends Model
     public $fillable =[
     	'nombre',
     	'descripcion',
-    	'fehcha_inicio',
+    	'fecha_inicio',
     	'fecha_fin',
     	'estado'
 
     ];
+    public function alumnos (){
+        return $this->hasMany('App\Models\Alumnos');
+    }
 }

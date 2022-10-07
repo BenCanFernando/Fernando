@@ -5,6 +5,7 @@ use DB;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
 use Flash;
+use App\Models\Curso;
 class AlumnoController extends Controller
 {
     /**
@@ -16,7 +17,8 @@ class AlumnoController extends Controller
     { 
         $nombre = $request->get('buscarpor');
         $alumnos = Alumno::where('nombre','like',"%$nombre%")->paginate(4);
-        return view('alumnos.index',compact('alumnos'));   
+       return view('alumnos.index',compact(
+        'alumnos'));   
     }
 
     /**
@@ -26,7 +28,8 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        return view('alumnos.create');
+        $cursos =Curso::pluck('nombre','id');
+        return view('alumnos.create',compact('cursos'));
     }
 
     /**
@@ -39,22 +42,22 @@ class AlumnoController extends Controller
     {
         $rules =[
             'nombre' => 'required',
-            'apellido' => 'required|alpha',
-            'edad' => 'required', 
-            'ci' => 'required|numeric', 
-            'telefono' => 'required|max:10', 
-            'direccion' => 'required',
+             'apellido' => 'required|alpha',
+             'edad' => 'required', 
+             'ci' => 'required |numeric', 
+             'telefono' => 'required |max:10', 
+             'direccion' => 'required',
             'gmail' => 'required|unique:alumnos,gmail',
             'profesion' => 'required',
             'genero' => 'required',
             'fechanac' => 'required',
-            'cursos_id' => 'required'
+            'curso_id' => 'required'
         ];
             $mensaje =[
-                'required' =>'El :attribute es requerido',
+                'required' =>'El :attributed es requerido',
                 'fechanac.required' => 'La fecha de nacimiento es requerido',
                 'telefono.required' => 'El numero de telefono es requerido',
-                'cursos_id.required' => 'El  curso es requerido'
+                'curso_id.required' => 'El  curso es requerido'
         ];
         $this->validate($request,$rules,$mensaje);
         $alumnos= request()->except('_token');
@@ -66,41 +69,43 @@ class AlumnoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Alumno  $alumnos
+     * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $id)
     {
+        $cursos =Curso::pluck('nombre','id');
         $alumnos=Alumno::findorFail($id);
-        return view('alumnos.show', compact('alumnos'));
+        return view ('alumnos.show', compact('alumnos','cursos'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Alumno  $alumnos
+     * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $alumnos=Alumno::findorFail($id);
-        return view ('alumnos.edit', compact('alumnos'));
+    {   
+    $cursos =Curso::pluck('nombre','id');
+       $alumnos=Alumno::findorFail($id);
+        return view ('alumnos.edit', compact('alumnos','cursos'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Alumno  $alumnos
+     * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Request $request, $id)
     {
-        $alumnos=request()->except(['_token','_method']);
-        Alumno::where('id','=',$id)->update($alumnos);
-        Flash::success('Actualizado correctamente');
+      $alumnos=request()->except(['_token','_method']);
+      Alumno::where('id','=',$id)->update($alumnos);
+       Flash::success('Actualizado correctamente');
         return redirect ('alumnos');
-    } 
+    }
 
     /**
      * Remove the specified resource from storage.

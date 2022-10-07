@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use DB;
+
 use App\Models\Curso;
 use Illuminate\Http\Request;
 use Flash;
@@ -12,11 +12,12 @@ class CursoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    { 
+    public function index( request $request)
+    {
         $nombre = $request->get('buscarpor');
         $cursos = Curso::where('nombre','like',"%$nombre%")->paginate(4);
-        return view('cursos.index',compact('cursos'));   
+        return view('cursos.index',compact(
+        'cursos'));   
     }
 
     /**
@@ -37,21 +38,6 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        $rules =[
-            'nombre' => 'required',
-            'descripcion' => 'required|alpha',
-            'fechainic' => 'required',
-            'fechafin' => 'required',
-            'estado' => 'required'
-        ];
-            $mensaje =[
-                'required' =>'El :attribute es requerido',
-                'descripcion.required' => 'La :attribute es requerida',
-                'fechainic.required' => 'La fecha de inicio es requerida',
-                'fechafin.required' => 'La fecha de finalizacion es requerida',
-                'estado.required' => 'El  estado es requerido'
-        ];
-        $this->validate($request,$rules,$mensaje);
         $cursos= request()->except('_token');
         Curso::insert($cursos);
         Flash::success('Creado correctamente');
@@ -61,22 +47,21 @@ class CursoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Curso  $cursos
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(cr $cr)
     {
-        $cursos=Curso::findorFail($id);
-        return view('cursos.show', compact('cursos'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Curso  $cursos
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id)
     {
         $cursos=Curso::findorFail($id);
         return view ('cursos.edit', compact('cursos'));
@@ -86,24 +71,24 @@ class CursoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Curso  $curso
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,  $id)
     {
-        $curso=request()->except(['_token','_method']);
-        Curso::where('id','=',$id)->update($curso);
-        Flash::success('Actualizado correctamente');
-        return redirect ('cursos'); 
+      $cursos=request()->except(['_token','_method']);
+      Curso::where('id','=',$id)->update($cursos);
+       Flash::success('Actualizado correctamente');
+        return redirect ('cursos');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Curso  $cursos
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
         Curso::destroy($id);
         Flash::error('Eliminado correctamente');
