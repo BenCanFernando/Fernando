@@ -11,12 +11,12 @@
               <button class="btn btn-primary" type="submit">Buscar</button>
               </form>
               <br>
-<div class="table-responsive">
+<div class="table-responsive-sm">
 	<table class="table table-hover" id="tabla">
 		<thead>
 		<tr class="table-secondary">
 				<th>Nombre</th>
-				<th>Descripción</th>
+				<th>Descripcion</th>
 				<th>Fecha de inicio</th>
 				<th>Fecha fin</th>
 				<th>Estado</th>
@@ -28,11 +28,20 @@
 			<tr>
 				<td>{{$a->nombre}}</td>
 				<td>{{$a->descripcion}}</td>
-				<td>{{$a->fechainic}}</td>
-				<td>{{$a->fechafin}}</td>
-				<td>{{$a->estado}}</td>
-				
-			 <td>
+				<td>{{$a->fecha_inicio}}</td>
+				<td>{{$a->fecha_fin}}</td>
+				<td>@switch(true)
+				@case($a->estado =='En curso')
+				<span class="badge badge-success">{{$a->estado}}</span>
+				@break</td>
+				@case($a->estado =='Terminado')
+				<span class="badge badge-danger">{{$a->estado}}</span>
+				@break</td>
+				@case($a->estado =='Proximamente')
+				<span class="badge badge-primary">{{$a->estado}}</span>
+				@break</td>
+				@endswitch
+				<td>
 			 <div class="btn-group">
 				 <a href="{{route('cursos.show', $a->id )}}"><input type="submit" class="btn btn-info" value="Ver"> </a>
 			 	<a href="{{url('/cursos/'.$a->id.'/edit')}}">
@@ -50,6 +59,10 @@
 		</tbody>
 	</table>
 
+   </div> 
+  </tbody>
+ </div>
+</div>
    </div> 
   </tbody>
  </div>

@@ -4,7 +4,7 @@
 	<div class="jumbotron">
    <div class="form-row align-items-center">
     <div class="form-group col-md-12">
-	<h1>Detalles del alumno</h1>
+	<h1>Datelle alumno</h1>
 	<label for="nombre">Nombre de alumno</label>
 	<input type="text" class="form-control" name="nombre" id="nombre" value="{{$alumnos->nombre}}" disabled="true">
 	<label for="Apellido">Apellido</label>
@@ -13,15 +13,15 @@
 	<input type="number" class="form-control" name="edad" id="edad" value="{{$alumnos->edad}}" disabled="true">
 	<label for="ci">Ci</label>
 	<input type="number" class="form-control" name="ci" id="ci" value="{{$alumnos->ci}}" disabled="true">
-	<label for="telefono">Teléfono</label>
+	<label for="telefono">Telefono</label>
 	<input type="number" class="form-control" name="telefono" id="telefono" value="{{$alumnos->telefono}}" disabled="true">
-	<label for="direccion">Dirección</label>
+	<label for="direccion">Direccion</label>
 	<input type="text" class="form-control" name="direccion" id="direccion" value="{{$alumnos->direccion}}" disabled="true">
 	<label for="gmail">Gmail</label>
 	<input type="gmail" class="form-control" name="gmail" id="gmail" value="{{$alumnos->gmail}}" disabled="true">
-	<label for="profesion">Profesión</label>
+	<label for="profesion">Profesion</label>
 	<input type="text" class="form-control" name="profesion" id="profesion" value="{{$alumnos->profesion}}" disabled="true">
-	<label for="genero">Género</label>
+	<label for="genero">Genero</label>
 	<select class="custom-select " aria-label="Default select example" name="genero" value="{{$alumnos->genero}}" disabled="true">
 	  <option selected>Selecione</option>
 	  <option value="masculino" {{$alumnos->genero =='masculino'? 'selected' : ''}}>Masculino</option>
@@ -30,8 +30,12 @@
 	</select>
 	<label for="fechanac">Fecha de nacimiento</label>
 	<input type="date" class="form-control" name="fechanac" id="fechanac" value="{{$alumnos->fechanac}}" disabled="true">
+	<div class="form-group col-md-13">
+	 {!! Form::label('curso_id', 'Seleccionar curso:') !!}
+     {!! Form::select('curso_id', $cursos, null, ['disabled','class' => 'form-control custom-select','placeholder'=>'Seleccione', ]) !!}
+	</div>
 	<br>
-    <a class="pull-right" href="{{route('alumnos.index')}} "><button type="button" class="btn btn-warning">Volver</button></a>
+    <a class="pull-right" href="{{route('alumnos.index')}} "><button type="button" class="btn btn-danger">Cancelar</button></a>
 		
 </div>
 </div>

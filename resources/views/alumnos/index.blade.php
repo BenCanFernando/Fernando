@@ -42,7 +42,7 @@
 				<td>{{$a->profesion}}</td>
 				<td>{{$a->genero}}</td>
 				<td>{{$a->fechanac}}</td>
-				<td>{{$a->cursos_id}}</td>
+				<td>{{$a->cursos->nombre}}</td>
 			    <td>
 			 	<div class="btn-group">
 				 <a href="{{route('alumnos.show', $a->id )}}"><input type="submit" class="btn btn-info" value="Ver"> </a>
