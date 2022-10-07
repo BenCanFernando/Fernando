@@ -49,7 +49,7 @@
      {!! Form::select('curso_id', $cursos, null, ['class' => 'form-control custom-select','placeholder'=>'Seleccione']) !!}
 	</div>
 		<br>
-    <input type="submit" class="btn btn-primary" value="Guardar">
+    <input type="submit" class="btn btn-success" value="Guardar">
     <a class="pull-right" href="{{route('alumnos.index')}} "><button type="button" class="btn btn-danger">Cancelar</button></a>
 		
 	</form>

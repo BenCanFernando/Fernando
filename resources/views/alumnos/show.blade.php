@@ -35,7 +35,7 @@
      {!! Form::select('curso_id', $cursos, null, ['disabled','class' => 'form-control custom-select','placeholder'=>'Seleccione', ]) !!}
 	</div>
 	<br>
-    <a class="pull-right" href="{{route('alumnos.index')}} "><button type="button" class="btn btn-danger">Cancelar</button></a>
+    <a class="pull-right" href="{{route('alumnos.index')}} "><button type="button" class="btn btn-warning">Volver</button></a>
 		
 </div>
 </div>

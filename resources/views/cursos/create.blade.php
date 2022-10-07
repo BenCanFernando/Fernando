@@ -23,10 +23,10 @@
 	<input type="text" class="form-control" name="nombre" id="nombre">
 	<label for="descripcion">Descripcion</label>
 	<input type="text" class="form-control" name="descripcion" id="descripcion">
-	<label for="fecha_inicio">Fecha de inicio</label>
-	<input type="date" class="form-control" name="fecha_inicio" id="fecha_inicio">
-	<label for="fecha_fin">Fecha Fin</label>
-	<input type="date" class="form-control" name="fecha_fin" id="fecha_fin">
+	<label for="fechainic">Fecha de inicio</label>
+	<input type="date" class="form-control" name="fechainic" id="fechainic">
+	<label for="fechafin">Fecha Fin</label>
+	<input type="date" class="form-control" name="fechafin" id="fechafin">
 	<label for="estado">Cursos</label>
 	<select class="custom-select " aria-label="Default select example" name="estado" >
 	  <option selected>Selecione una opcion</option>
@@ -35,7 +35,7 @@
 	  <option value="Terminado">Terminado</option>
 	</select>
 		<br>
-    <input type="submit" class="btn btn-primary" value="Guardar">
+    <input type="submit" class="btn btn-success" value="Guardar">
     <a class="pull-right" href="{{route('cursos.index')}} "><button type="button" class="btn btn-danger">Cancelar</button></a>
 		
 	</form>

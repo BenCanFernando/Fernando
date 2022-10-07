@@ -4,7 +4,7 @@
 	<div class="jumbotron">
    <div class="form-row align-items-center">
     <div class="form-group col-md-12">
-	<h1>Crear curso</h1>
+	<h1>Editar curso</h1>
 	<form action="{{url('/cursos/'.$cursos->id)}}" method="post" enctype="multipart/from-data">
 	@csrf
 	{{method_field('PATCH')}}
@@ -24,7 +24,7 @@
 	  <option value="Terminado" {{$cursos->estado =='Terminado'? 'selected' : ''}}>Terminado</option>
 	</select>
 		<br>
-    <input type="submit" class="btn btn-primary" value="Guardar">
+    <input type="submit" class="btn btn-success" value="Guardar">
     <a class="pull-right" href="{{route('cursos.index')}} "><button type="button" class="btn btn-danger">Cancelar</button></a>
 		
 	</form>

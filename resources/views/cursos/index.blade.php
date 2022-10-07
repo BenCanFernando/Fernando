@@ -28,8 +28,8 @@
 			<tr>
 				<td>{{$a->nombre}}</td>
 				<td>{{$a->descripcion}}</td>
-				<td>{{$a->fecha_inicio}}</td>
-				<td>{{$a->fecha_fin}}</td>
+				<td>{{$a->fechainic}}</td>
+				<td>{{$a->fechafin}}</td>
 				<td>@switch(true)
 				@case($a->estado =='En curso')
 				<span class="badge badge-success">{{$a->estado}}</span>
