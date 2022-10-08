@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 use Flash;
+use DB;
 class CursoController extends Controller
 {
     /**
@@ -13,9 +14,30 @@ class CursoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index( request $request)
-    {
+    {   /*$c = DB::table('cursos')
+        ->where ('estado','En curso')
+        ->get();
+        return $c;*/
+   
+        /*$r = DB::table('cursos')->find(3);
+        return $r;*/
+
+        /*$r = DB::table('cursos')
+        ->where ('estado','Proximamente')
+        ->get()
+        ->count();
+        return $r;*/
+
+        /*$c = Curso::select('*')
+        ->get();
+        return $c;*/
+
+        /*$c = Curso::select("*")
+        ->get();
+        return $c;*/
+
         $nombre = $request->get('buscarpor');
-        $cursos = Curso::where('nombre','like',"%$nombre%")->paginate(4);
+        $cursos = Curso::where('nombre','like',"%$nombre%")->paginate(3);
         return view('cursos.index',compact(
         'cursos'));   
     }
@@ -50,9 +72,11 @@ class CursoController extends Controller
      * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function show(cr $cr)
+    public function show($id)
     {
-        //
+       /* $cursos=Alumno::pluck('nombre','id');
+        $alumnos=Curso::findorFail($id);
+        return view ('cursos.show');*/
     }
 
     /**

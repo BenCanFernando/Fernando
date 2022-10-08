@@ -20,7 +20,8 @@ class Alumno extends Model
         'gmail',
         'profesion',
         'genero',
-        'fechanac'
+        'fechanac',
+        'cursos_id'
 
 
     ];

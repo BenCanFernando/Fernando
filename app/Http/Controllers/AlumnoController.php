@@ -16,7 +16,7 @@ class AlumnoController extends Controller
     public function index(Request $request)
     { 
         $nombre = $request->get('buscarpor');
-        $alumnos = Alumno::where('nombre','like',"%$nombre%")->paginate(4);
+        $alumnos = Alumno::where('nombre','like',"%$nombre%")->paginate(2);
        return view('alumnos.index',compact(
         'alumnos'));   
     }
@@ -51,7 +51,7 @@ class AlumnoController extends Controller
             'profesion' => 'required',
             'genero' => 'required',
             'fechanac' => 'required',
-            'curso_id' => 'required'
+            'cursos_id' => 'required'
         ];
             $mensaje =[
                 'required' =>'El :attributed es requerido',
@@ -72,7 +72,7 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function show( $id)
+    public function show($id)
     {
         $cursos =Curso::pluck('nombre','id');
         $alumnos=Alumno::findorFail($id);
